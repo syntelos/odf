@@ -1,0 +1,14 @@
+579,591d578
+< 	/**
+< 	 * Retrieve the ODF AutomaticStyles
+< 	 *
+< 	 * @return the {@odf.element style:automatic-styles} element of this dom. May return null
+< 	 *         if there is not yet such element in this dom.
+< 	 *
+< 	 * @see #getOrCreateAutomaticStyles()
+< 	 *
+< 	 */
+< 	public OdfOfficeAutomaticStyles getAutomaticStyles() {
+< 		return OdfElement.findFirstChildNode(OdfOfficeAutomaticStyles.class, getFirstChild());
+< 	}
+< 

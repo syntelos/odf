@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="odf" default="update">
+  <tstamp/>
+  <property name="compiler.encoding" value="ISO-8859-1"/>
+  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.target" value="1.6"/>
+  <property name="compiler.optimize" value="false"/>
+  <property name="compiler.debug" value="true"/>
+  <property name="compiler.deprecation" value="false"/>
+
+  <property name="src" value="src"/>
+  <property name="lib" value="lib"/>
+  <property name="bin" value="bin"/>
+
+  <property name="ver" value="ver/src"/>
+  <property file="${user.home}/update.properties"/>
+
+  <import file="ant/build.in.java.xml"/>
+  <import file="ant/build.in.update.xml"/>
+  <import file="ant/build.in.version.xml"/>
+
+  <path id="lib.path">
+
+    <fileset dir="${lib}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+
+  <target name="clean" description="Delete all products: 'out', 'jar', etc..">
+
+    <clean bin="${bin}" this="."/>
+  </target>
+
+  <target name="update" if="odf.update" depends="jar" description="Copy jar product to targets defined in '../update.properties' name 'odf.update'.">
+
+    <do-update src="${target.jar}" tgt="${odf.update}" />
+  </target>
+
+  <target name="jar" depends="compile" description="Produce target jar.  See 'version'.">
+    <archive.cleanly/>
+
+    <archive target="${target.jar}" bin="${bin}" manifest="${src}/Manifest.mf">
+      <pack/>
+    </archive>
+
+    <flush dir="${bin}" type="class"/>
+  </target>
+
+  <target name="compile" depends="version" description="Compile code from 'src' to bin.">
+
+    <compile src="${src}" ver="${ver}" bin="${bin}" classpath.id="lib.path"/>
+
+  </target>
+
+  <target name="version" description="Report current project version.">
+    <version/>
+    <property name="target.jar" value="${ant.project.name}.jar"/>
+
+  </target>
+
+  <target name="build" description="Increment project version build number.">
+    <version-build/>
+    <version/>
+  </target>
+
+  <target name="major" description="Increment project version major number.">
+    <version-major/>
+    <version/>
+  </target>
+
+  <target name="minor" description="Increment project version minor number.">
+    <version-minor/>
+    <version/>
+  </target>
+
+</project>
