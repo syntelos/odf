@@ -27,7 +27,7 @@ case $1 in
 	do
 	    tgt=$(echo ${dif} | sed 's%patches/%%; s%\.diff$%%')
 
-	    if patch ${tgt} -i ${dif}
+	    if patch -R ${tgt} -i ${dif}
 	    then
 		ls -l ${tgt}
 	    else
