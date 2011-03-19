@@ -36,6 +36,7 @@ then
 		exit 0
 	    else
 		if backout
+		then
 		    cat<<EOF
 Patches failed to build, backed out.  Please run this script again.
 If you're really unhappy, delete the world and start over.
@@ -50,6 +51,7 @@ EOF
 	    fi
 	else
 	    if backout
+	    then
 		cat<<EOF
 Patches failed, backed out.  Please run this script again.
 If you're really unhappy, delete the world and start over.
