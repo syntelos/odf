@@ -17,4 +17,6 @@ do
 	exit 1
     fi
 done
+
+echo "Updated upstream odfdom and simple.  Need 'copy' then 'ant'."
 exit 0

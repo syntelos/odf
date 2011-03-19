@@ -112,4 +112,5 @@ Error in 'version=\$(./versionof.sh odfdom)'.
 EOF
 exit  1
 fi
+echo "Copy completed.  Need 'patch'?"
 exit 0
